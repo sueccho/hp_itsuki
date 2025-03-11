@@ -1,1 +1,815 @@
+:root {
+    --primary-color: #2D8C4B;
+    --secondary-color: #A5D6B7;
+    --accent-color: #FF6B6B;
+    --text-color: #333333;
+    --bg-color: #F5F8F6;
+    --white: #FFFFFF;
+    --header-height: 80px;
+}
 
+/* ベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* ヘッダースタイル */
+.header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--white);
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 共通コンテナスタイル */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* セクションスタイル */
+.section {
+    padding: 80px 0;
+}
+
+/* ボタンスタイル */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* ヒーローセクション */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-slider {
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    color: var(--white);
+    text-align: center;
+    max-width: 800px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+}
+
+.slide.active .hero-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    line-height: 1.8;
+}
+
+/* アニメーション用のスタイル */
+.animate-text {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.animate-text.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-fade {
+    opacity: 0;
+}
+
+.animate-fade.active {
+    opacity: 1;
+    transition: opacity 0.8s ease 1s;
+}
+
+/* サービスカード */
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-card h3 {
+    padding: 20px 20px 10px;
+    font-size: 1.4rem;
+}
+
+.service-card p {
+    padding: 0 20px 20px;
+}
+
+/* お知らせセクション */
+.news-list {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.news-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.news-date {
+    min-width: 100px;
+    color: #666;
+}
+
+.news-category {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin: 0 15px;
+}
+
+.news-link {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+}
+
+/* フッタースタイル */
+.footer {
+    background-color: #333333;
+    padding: 40px 0 20px;
+    margin-top: 60px;
+    color: #fff;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.footer-section {
+    margin-bottom: 30px;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #28a745;
+}
+
+.footer-section p {
+    color: #fff;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.copyright {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    /* ヒーロー */
+    .hero {
+        height: 60vh;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* モバイルメニュー */
+    .mobile-menu-btn {
+        display: block;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        padding: 8px 15px;
+        border-radius: 4px;
+        margin-left: auto;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 100;
+        position: relative;
+    }
+
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px 20px 20px;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        z-index: 99;
+    }
+
+    .nav-menu li {
+        margin: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu a {
+        display: block;
+        font-size: 1rem;
+        padding: 8px 0;
+        color: #333;
+        text-decoration: none;
+    }
+
+    /* 会社概要テーブル */
+    .company-table th,
+    .company-table td {
+        padding: 15px;
+        display: block;
+        width: 100%;
+    }
+
+    .company-table th {
+        border-bottom: none;
+        padding-bottom: 5px;
+    }
+
+    .company-table td {
+        padding-top: 5px;
+    }
+
+    /* フッター */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+}
+
+/* ナビゲーション */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #28a745;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after,
+.current-page::after {
+    transform: scaleX(1);
+}
+
+.current-page {
+    color: #28a745;
+}
+
+/* 会社概要ページ */
+.company-section {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+.company-section h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.company-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.company-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.company-table th,
+.company-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.company-table th {
+    width: 25%;
+    text-align: left;
+    font-weight: bold;
+    background-color: #666666;
+    color: #fff;
+}
+
+.company-table td {
+    background-color: #fff;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    height: 400px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* モバイルメニュー */
+.mobile-menu-btn {
+    display: none;  /* デフォルトで非表示に変更 */
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin-left: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+    position: relative;
+}
+
+/* デフォルト（PC表示）のスタイルはそのまま */
+@media screen and (max-width: 767px) {
+    .company-section {
+        padding: 40px 0;
+    }
+
+    .company-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .company-table,
+    .company-table tbody,
+    .company-table tr {
+        display: block;
+    }
+
+    .company-table tr {
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    .company-table th,
+    .company-table td {
+        display: block;
+        width: 100%;
+        border-bottom: none;
+    }
+
+    .company-table th {
+        background-color: #666666;
+        color: #fff;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .company-table td {
+        padding: 1rem;
+        background-color: var(--white);
+    }
+}
+
+/* サービス案内ページ */
+.service-section {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+.service-section h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.service-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.service-list {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.service-list li {
+    margin-bottom: 0.5rem;
+}
+
+.service-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* テーブルスタイルは company-table と同じクラスを使用可能 */
+.service-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.service-table th,
+.service-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.service-table th {
+    width: 25%;
+    text-align: left;
+    font-weight: bold;
+    background-color: #666666;
+    color: #fff;
+}
+
+.service-table td {
+    background-color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+    .service-section {
+        padding: 40px 0;
+    }
+
+    .service-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .service-table,
+    .service-table tbody,
+    .service-table tr {
+        display: block;
+    }
+
+    .service-table tr {
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    .service-table th,
+    .service-table td {
+        display: block;
+        width: 100%;
+        border-bottom: none;
+    }
+
+    .service-table th {
+        background-color: #666666;
+        color: #fff;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .service-table td {
+        padding: 1rem;
+        background-color: var(--white);
+    }
+}
+
+.page-header {
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.flow-chart {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.flow-item {
+    position: relative;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+.flow-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flow-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 30px;
+    background-color: var(--primary-color);
+}
+
+.flow-content {
+    border: 4px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 25px;
+    background-color: #fff;
+}
+
+.flow-step {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.flow-content h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.flow-content p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0.5rem 2rem;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-color);
+    border-radius: 30px;
+    border: 2px solid var(--primary-color);
+}
+
+/* ニュースページネーションのスタイル */
+.news-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.pagination-btn {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not([disabled]) {
+    background-color: #f0f0f0;
+}
+
+.pagination-btn.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.pagination-btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.error-message {
+    color: #d9534f;
+    text-align: center;
+    padding: 10px;
+} 
