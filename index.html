@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ケアぷらん樹 | 介護サービス</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/news-loader.js" defer></script>
+
+    
+</head>
+<body>
+    <!-- ヘッダー部分を修正 -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">ケアぷらん樹</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="メニューを開く">≡</button>
+            <nav id="mainNav" class="nav-menu">
+                <ul class="nav-menu">
+                    <li><a href="company.html" class="nav-link">会社概要</a></li>
+                    <li><a href="services.html" class="nav-link">サービス案内</a></li>
+                    <li><a href="contact.html" class="nav-link">お問合せ</a></li>
+                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ヒーローセクション -->
+        <section class="hero">
+            <div class="hero-slider">
+                <div class="slide active" style="background-image: url('images/hero.jpg')">
+                    <div class="slide-overlay">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                <span class="animate-text">あなたの「○○がしたい」を<br>一緒に叶えましょう</span>
+                            </h1>
+                            <p class="hero-subtitle animate-fade">
+                                <span class="animate-text">介護・福祉歴20年の実績と信頼</span>
+                            </p>
+                            <p class="hero-description">
+                                <span class="animate-text">主任ケアマネージャー・介護福祉士の資格を持つ</span><br>
+                                <span class="animate-text">ケアマネ経験6年・介護福祉士歴10年のプロが、</span><br>
+                                <span class="animate-text">一人ひとりの想いに寄り添い支援いたします。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- サービス紹介カード -->
+        <section class="services-overview section">
+            <div class="container">
+                <h2 class="section-title">サービス案内</h2>
+                <div class="service-cards">
+                    <div class="service-card animate-on-scroll">
+                        <img src="images/service1.jpg" alt="訪問介護">
+                        <h3>訪問介護</h3>
+                        <p>ご自宅での生活をサポートする訪問介護サービスを提供しています。</p>
+                        <a href="services.html#home-care" class="btn-secondary">詳しく見る</a>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <img src="images/service2.jpg" alt="デイサービス">
+                        <h3>デイサービス</h3>
+                        <p>充実した施設でのデイサービスで、楽しく快適な時間をお過ごしいただけます。</p>
+                        <a href="services.html#day-service" class="btn-secondary">詳しく見る</a>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <img src="images/service3.jpg" alt="ケアプラン作成">
+                        <h3>ケアプラン作成</h3>
+                        <p>お一人おひとりの状況に合わせた、きめ細やかなケアプランを作成いたします。</p>
+                        <a href="services.html#care-plan" class="btn-secondary">詳しく見る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- お知らせセクション -->
+         <section class="news-section section">
+            <div class="container">
+                <h2 class="section-title">お知らせ</h2>
+                <div id="news-list" class="news-list">
+                    <!-- ここにJavaScriptでニュースアイテムが挿入されます -->
+                    <div class="loading-indicator">読み込み中...</div>
+                </div>
+                <div class="news-pagination" id="news-pagination">
+                    <!-- ページネーションがここに挿入されます -->
+                </div>
+            </div>
+        </section>
+    </main>
+<!-- フッター -->
+<div id="footer-placeholder"></div>
+
+<script src="js/footer-loader.js"></script>
+</body>
+</html> 
