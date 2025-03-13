@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+</head>
+<body>
+    <h2>ログインページ</h2>
+    <label for="username">ユーザー名:</label>
+    <input type="text" id="username"><br><br>
+    <label for="password">パスワード:</label>
+    <input type="password" id="password"><br><br>
+    <button onclick="login()">ログイン</button>
+
+    <script>
+        function login() {
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+
+            const correctUser = "admin";  // 任意のユーザー名
+            const correctPass = "password123"; // 任意のパスワード
+
+            if (user === correctUser && pass === correctPass) {
+                sessionStorage.setItem("authenticated", "true");
+                window.location.href = "index.html"; // 認証後のページへ遷移
+            } else {
+                alert("ユーザー名またはパスワードが違います");
+            }
+        }
+    </script>
+</body>
+</html>
