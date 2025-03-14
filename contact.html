@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問合せ | ケアぷらん樹</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <!-- ヘッダー部分 -->
+    <header class="header">
+        <div id="header-placeholder"></div>
+    </header>
+
+    <main>
+        <!-- お問い合わせセクション -->
+        <section class="contact-section">
+            <div class="container page-header">
+                <h2>お問合せ</h2>
+                
+                <!-- 連絡先情報 -->
+                <div class="contact-info">
+                    <p>お電話でのお問合せ</p>
+                    <p class="phone-number">TEL：090-5945-8110</p>
+                    <p>FAX：0940-72-1959</p>
+                    <p class="business-hours">営業時間：平日 8:30～17:30<br>休業日：土曜・日曜・祝日</p>
+                </div>
+
+                <!-- お問い合わせフォーム -->
+                <form class="contact-form" action="submit.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">お名前 <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">メールアドレス <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">電話番号</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">お問合せ項目 <span class="required">*</span></label>
+                        <select id="subject" name="subject" required>
+                            <option value="">選択してください</option>
+                            <option value="service">サービスについて</option>
+                            <option value="consultation">介護相談</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">お問合せ内容 <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">送信する</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/common.js"></script>
+</body>
+</html> 

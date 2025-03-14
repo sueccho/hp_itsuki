@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくあるご質問 | ケアぷらん樹</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <!-- ヘッダー部分 -->
+    <header class="header">
+        <div id="header-placeholder"></div>
+    </header>
+
+    <main>
+        <section class="faq-section">
+            <div class="container page-header">
+                <h2>よくあるご質問</h2>
+                
+                <div class="faq-container" id="faq-list">
+                    <!-- FAQはJavaScriptで動的に読み込まれます -->
+                </div>
+
+                <!-- お問い合わせ誘導 -->
+                <div class="contact-guide">
+                    <p>その他のご質問がございましたら、お気軽にお問い合わせください。</p>
+                    <a href="contact.html" class="contact-btn">お問い合わせはこちら</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/faq.js"></script>
+    <script>
+        // DOMContentLoadedイベントの代わりに即時実行
+        window.onload = function() {
+            if (typeof loadFAQ === 'function') {
+                loadFAQ();
+            } else {
+                console.error('loadFAQ関数が見つかりません');
+            }
+        };
+    </script>
+</body>
+</html> 
