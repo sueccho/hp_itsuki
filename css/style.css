@@ -132,6 +132,7 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    margin-top: var(--header-height); /* ヘッダーの高さ分だけマージンを追加 */
 }
 
 .hero-slider {
@@ -364,7 +365,8 @@ body {
 @media (max-width: 768px) {
     /* ヒーロー */
     .hero {
-        height: 60vh;
+        height: calc(100vh - var(--header-height)); /* ビューポートの高さからヘッダーの高さを引く */
+        margin-top: var(--header-height); /* ヘッダーの高さ分のマージンを維持 */
     }
 
     .hero-title {
@@ -478,6 +480,22 @@ body {
 
     .news-date {
         margin-bottom: 5px;
+    }
+}
+
+/* iPhoneSE・小さい画面向けの追加対応 */
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 }
 
