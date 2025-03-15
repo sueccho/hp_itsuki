@@ -41,6 +41,34 @@ git clone https://github.com/sueccho/hp_itsuki.git
 - ヘッダーとフッターは共通コンポーネントとして管理
   - `components/header.html`と`components/footer.html`を`common.js`で各ページに読み込み
 
+## EmailJS設定手順
+**※とりあえず、末廣のメールアドレスにて登録**
+
+1. EmailJSアカウントの作成
+   - [EmailJS公式サイト](https://www.emailjs.com/)でアカウントを作成
+   - Gmailアカウントとの連携を許可
+
+2. EmailJSサービスの設定
+   - ダッシュボードから「Email Services」を選択
+   - Gmail連携を選択し設定
+   - 現在のService ID: `service_qpp4grg`
+
+3. メールテンプレートの作成
+   - 「Email Templates」から新規テンプレートを作成
+   - 以下の変数を使用してテンプレートを作成：
+     - {{from_name}} - 送信者名
+     - {{from_email}} - 送信者のメールアドレス
+     - {{phone}} - 電話番号
+     - {{subject}} - お問い合わせ項目
+     - {{message}} - お問い合わせ内容
+   - 現在のTemplate ID: `template_jm5piws`
+
+4. Public Keyの設定
+   - 「Account」から「API Keys」セクションで確認可能
+   - 現在のPublic Key: `02-eF8j5-Mbnaw9va`
+
+注意: これらのIDやKeyを変更した場合は、`contact.html`の対応する値も更新が必要です。
+
 ## 更新履歴
 ### v1.0.0 (2025-03-09)
 - githubでリモートリポジトリを作成して制作開始

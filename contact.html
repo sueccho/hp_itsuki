@@ -7,6 +7,54 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // EmailJSの初期化（ページ読み込み時に実行）
+            emailjs.init("02-eF8j5-Mbnaw9va"); // ここにEmailJSのPublic Keyを設定
+        })();
+
+        function sendMail(event) {
+            event.preventDefault();
+            
+            // 送信ボタンを無効化
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '送信中...';
+            
+            // フォームデータの取得
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // メールテンプレートに送信するパラメータ
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                phone: phone,
+                subject: subject,
+                message: message,
+                to_email: "sueccho@gmail.com"
+            };
+
+            // EmailJSを使用してメール送信
+            emailjs.send('service_qpp4grg', 'template_jm5piws', templateParams)
+                .then(function(response) {
+                    formStatus.innerHTML = '<div class="success-message">お問い合わせを受け付けました。<br>内容を確認次第、担当者よりご連絡させていただきます。</div>';
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    formStatus.innerHTML = '<div class="error-message">送信に失敗しました。<br>お手数ですが、時間をおいて再度お試しください。</div>';
+                    console.error('EmailJS送信エラー:', error);
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '送信する';
+                });
+        }
+    </script>
 </head>
 <body>
     <!-- ヘッダー部分 -->
@@ -28,7 +76,7 @@
                 </div>
 
                 <!-- お問い合わせフォーム -->
-                <form class="contact-form" action="submit.php" method="POST">
+                <form class="contact-form" id="contactForm" onsubmit="sendMail(event)">
                     <div class="form-group">
                         <label for="name">お名前 <span class="required">*</span></label>
                         <input type="text" id="name" name="name" required>
@@ -60,8 +108,10 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="submit-btn">送信する</button>
+                        <button type="submit" class="submit-btn" id="submitBtn">送信する</button>
                     </div>
+                    <!-- 送信状態表示用の要素を追加 -->
+                    <div id="formStatus" class="form-status"></div>
                 </form>
 
                 <!-- プライバシーポリシー説明 -->
