@@ -7,122 +7,145 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
     <script src="js/news-loader.js" defer></script>
+    <!-- ログイン画面 -->
     <script>
-    function checkAccess() {
-        const correctUser = "halo";  // ここでIDを設定
-        const correctPass = "smile";  // ここでパスワードを設定
+        function checkAccess(event) {
+            event.preventDefault();
+            const correctUser = "halo";  // ここでIDを設定
+            const correctPass = "smile";  // ここでパスワードを設定
 
-        const user = prompt("Enter Username:");
-        const pass = prompt("Enter Password:");
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
 
-        if (user === correctUser && pass === correctPass) {
-            alert("Access Granted!");
-        } else {
-            alert("Access Denied!");
-            window.location.href = "https://www.google.com/";
+            if (user === correctUser && pass === correctPass) {
+                alert("Access Granted!");
+                document.getElementById("loginContainer").style.display = "none";
+                document.getElementById("content").style.display = "block";
+                document.body.style.height = "auto"; // bodyの高さをリセット
+                document.body.style.display = "block"; // bodyの表示をリセット
+            } else {
+                alert("Access Denied!");
+                window.location.href = "https://www.google.com/";
+            }
         }
-    }
-    checkAccess();
     </script>
-
-
-    
-</head>
-<body>
-    <!-- ヘッダー部分を修正 -->
-    <header class="header">
-        <div id="header-placeholder"></div>
-        <!-- <div class="header-container">
-            <a href="index.html" class="logo">ケアぷらん樹</a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="メニューを開く">≡</button>
-            <nav id="mainNav" class="nav-menu">
-                <ul class="nav-menu">
-                    <li><a href="company.html" class="nav-link">会社概要</a></li>
-                    <li><a href="services.html" class="nav-link">サービス案内</a></li>
-                    <li><a href="contact.html" class="nav-link">お問合せ</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                </ul>
-            </nav>
-        </div> -->
-    </header>
-
-    <main>
-        <!-- ヒーローセクション -->
-        <section class="hero">
-            <div class="hero-slider">
-                <div class="slide active" style="background-image: url('images/hero.jpg')">
-                    <div class="slide-overlay">
-                        <div class="hero-content">
-                            <h1 class="hero-title">
-                                <span class="animate-text">あなたの「○○がしたい」を<br>一緒に叶えましょう</span>
-                            </h1>
-                            <p class="hero-subtitle animate-fade">
-                                <span class="animate-text">介護・福祉歴20年の実績と信頼</span>
-                            </p>
-                            <p class="hero-description">
-                                <span class="animate-text">主任ケアマネージャー・介護福祉士の資格を持つ</span><br>
-                                <span class="animate-text">ケアマネ経験6年・介護福祉士歴10年のプロが、</span><br>
-                                <span class="animate-text">一人ひとりの想いに寄り添い支援いたします。</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <!-- ログイン画面ここまで -->
+    </head>
+    <body>
+        <!-- ログイン画面 -->
+        <div id="loginContainer">
+            <div id="loginForm">
+                <form onsubmit="checkAccess(event)">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <button type="submit">Login</button>
+                </form>
             </div>
-        </section>
+        </div>
+        <!-- ログイン画面ここまで -->
 
-        <!-- サービス紹介カード -->
-        <section class="services-overview section">
-            <div class="container">
-                <h2 class="section-title">サービス案内</h2>
-                <div class="service-cards">
-                    <div class="service-card animate-on-scroll">
-                        <div class="service-content">
-                            <img src="https://placehold.jp/350x250.png?text=訪問介護" alt="訪問介護" class="service-image">
-                            <div class="service-text">
-                                <h3 class="service-title">訪問介護</h3>
-                                <p class="service-description">私たちの訪問介護サービスは、利用者様の自宅での生活を支援します。経験豊富なスタッフが、日常生活のサポートを行い、安心して過ごせる環境を提供します。</p>
+        <div id="content" style="display:none;">
+        <!-- ここからがindex.htmlのコンテンツ -->
+            <!-- ヘッダー部分を修正 -->
+            <header class="header">
+                <div id="header-placeholder"></div>
+                <!--
+                <div class="header-container">
+                <a href="index.html" class="logo">ケアぷらん樹</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="メニューを開く">≡</button>
+                <nav id="mainNav" class="nav-menu">
+                    <ul class="nav-menu">
+                        <li><a href="company.html" class="nav-link">会社概要</a></li>
+                        <li><a href="services.html" class="nav-link">サービス案内</a></li>
+                        <li><a href="contact.html" class="nav-link">お問合せ</a></li>
+                        <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                    </ul>
+                </nav>
+                </div> -->
+            </header>
+            <main>
+                <!-- ヒーローセクション -->
+                <section class="hero">
+                    <div class="hero-slider">
+                        <div class="slide active" style="background-image: url('images/hero.jpg')">
+                            <div class="slide-overlay">
+                                <div class="hero-content">
+                                    <h1 class="hero-title">
+                                        <span class="animate-text">あなたの「○○がしたい」を<br>一緒に叶えましょう</span>
+                                    </h1>
+                                    <p class="hero-subtitle animate-fade">
+                                        <span class="animate-text">介護・福祉歴20年の実績と信頼</span>
+                                    </p>
+                                    <p class="hero-description">
+                                        <span class="animate-text">主任ケアマネージャー・介護福祉士の資格を持つ</span><br>
+                                        <span class="animate-text">ケアマネ経験6年・介護福祉士歴10年のプロが、</span><br>
+                                        <span class="animate-text">一人ひとりの想いに寄り添い支援いたします。</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="service-card animate-on-scroll">
-                        <div class="service-content">
-                            <img src="https://placehold.jp/350x250.png?text=デイサービス" alt="デイサービス" class="service-image">
-                            <div class="service-text">
-                                <h3 class="service-title">デイサービス</h3>
-                                <p class="service-description">私たちのデイサービスでは、充実したプログラムを通じて、楽しく快適な時間を提供します。専門のスタッフが、利用者様のニーズに応じた活動を行い、心身の健康をサポートします。</p>
+                </section>
+
+                <!-- サービス紹介カード -->
+                <section class="services-overview section">
+                    <div class="container">
+                        <h2 class="section-title">サービス案内</h2>
+                        <div class="service-cards">
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-content">
+                                    <img src="https://placehold.jp/350x250.png?text=訪問介護" alt="訪問介護" class="service-image">
+                                    <div class="service-text">
+                                        <h3 class="service-title">訪問介護</h3>
+                                        <p class="service-description">私たちの訪問介護サービスは、利用者様の自宅での生活を支援します。経験豊富なスタッフが、日常生活のサポートを行い、安心して過ごせる環境を提供します。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-content">
+                                    <img src="https://placehold.jp/350x250.png?text=デイサービス" alt="デイサービス" class="service-image">
+                                    <div class="service-text">
+                                        <h3 class="service-title">デイサービス</h3>
+                                        <p class="service-description">私たちのデイサービスでは、充実したプログラムを通じて、楽しく快適な時間を提供します。専門のスタッフが、利用者様のニーズに応じた活動を行い、心身の健康をサポートします。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card animate-on-scroll">
+                                <div class="service-content">
+                                    <img src="https://placehold.jp/350x250.png?text=ケアプラン作成" alt="ケアプラン作成" class="service-image">
+                                    <div class="service-text">
+                                        <h3 class="service-title">ケアプラン作成</h3>
+                                        <p class="service-description">私たちのケアプラン作成サービスは、個々の状況に応じた最適なプランを提供します。専門のケアマネージャーが、利用者様の希望やニーズを丁寧にヒアリングし、最適な支援を計画します。</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="service-card animate-on-scroll">
-                        <div class="service-content">
-                            <img src="https://placehold.jp/350x250.png?text=ケアプラン作成" alt="ケアプラン作成" class="service-image">
-                            <div class="service-text">
-                                <h3 class="service-title">ケアプラン作成</h3>
-                                <p class="service-description">私たちのケアプラン作成サービスは、個々の状況に応じた最適なプランを提供します。専門のケアマネージャーが、利用者様の希望やニーズを丁寧にヒアリングし、最適な支援を計画します。</p>
-                            </div>
+                </section>
+
+                <!-- お知らせセクション -->
+                <section class="news-section section">
+                    <div class="container">
+                        <h2 class="section-title">お知らせ</h2>
+                        <div id="news-list" class="news-list">
+                            <!-- ここにJavaScriptでニュースアイテムが挿入されます -->
+                            <div class="loading-indicator">読み込み中...</div>
+                        </div>
+                        <div class="news-pagination" id="news-pagination">
+                            <!-- ページネーションがここに挿入されます -->
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-         <!-- お知らせセクション -->
-         <section class="news-section section">
-            <div class="container">
-                <h2 class="section-title">お知らせ</h2>
-                <div id="news-list" class="news-list">
-                    <!-- ここにJavaScriptでニュースアイテムが挿入されます -->
-                    <div class="loading-indicator">読み込み中...</div>
-                </div>
-                <div class="news-pagination" id="news-pagination">
-                    <!-- ページネーションがここに挿入されます -->
-                </div>
-            </div>
-        </section>
-    </main>
-<!-- フッター -->
-<div id="footer-placeholder"></div>
-
-<script src="js/common.js"></script>
-</body>
-</html> 
+                </section>
+            </main>
+            <!-- フッター -->
+            <div id="footer-placeholder"></div>
+            <script src="js/common.js"></script>
+            <!-- フッターここまで -->
+        </div>
+        <!-- ここまでがindex.htmlのコンテンツ -->
+        </body>
+    </html>
