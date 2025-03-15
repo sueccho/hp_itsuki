@@ -35,9 +35,11 @@ git clone https://github.com/sueccho/hp_itsuki.git
 
 ## 開発者向け情報
 - アクセス認証が必要です
-  - halo:smile
+  - ID: halo
+  - パスワード: smile
 - 各種設定は `js/` ディレクトリ内のファイルで管理されています
 - ヘッダーとフッターは共通コンポーネントとして管理
+  - `components/header.html`と`components/footer.html`を`common.js`で各ページに読み込み
 
 ## 更新履歴
 ### v1.0.0 (2025-03-09)
@@ -61,3 +63,27 @@ git clone https://github.com/sueccho/hp_itsuki.git
 
 ## 連絡先
 sueccho@gmail.com
+
+## ファイル構成
+```plaintext
+hp_itsuki/
+├── index.html          # トップページ
+├── company.html        # 会社概要ページ
+├── services.html       # サービス案内ページ
+├── contact.html        # お問い合わせページ
+├── faq.html           # よくある質問ページ
+├── css/
+│   └── style.css      # メインのスタイルシート
+├── js/
+│   ├── main.js        # メインのJavaScript
+│   ├── common.js      # 共通コンポーネント用のスクリプト
+│   ├── news-loader.js # お知らせ読み込み用スクリプト
+│   └── faq.js         # よくある質問ページ用スクリプト
+├── components/
+│   ├── header.html    # 共通ヘッダー
+│   └── footer.html    # 共通フッター
+├── data/
+│   ├── news.json      # お知らせデータ
+│   └── faq.md        # FAQデータ
+└── images/
+    └── hero.jpg       # メインビジュアル画像
