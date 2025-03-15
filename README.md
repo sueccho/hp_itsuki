@@ -87,3 +87,6 @@ hp_itsuki/
 │   └── faq.md        # FAQデータ
 └── images/
     └── hero.jpg       # メインビジュアル画像
+
+## メモ
+- ダミー画像記述：https://placehold.jp/350x250.png?text=

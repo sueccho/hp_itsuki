@@ -187,7 +187,33 @@ body {
 
 .hero-subtitle {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+}
+
+.hero-subtitle .animate-text {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(transparent 60%, var(--primary-color) 60%);
+    padding: 0.2em 0.5em;
+    font-weight: bold;
+    color: var(--white);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(45, 140, 75, 0.8); /* primary-colorを半透明に */
+    border-radius: 30px;
+    transform: skew(-5deg);
+    z-index: 1;
 }
 
 .hero-description {
@@ -375,6 +401,7 @@ body {
 
     .hero-subtitle {
         font-size: 1.2rem;
+        padding: 0.4rem 1.5rem;
     }
 
     .hero-description {
@@ -491,6 +518,7 @@ body {
 
     .hero-subtitle {
         font-size: 1rem;
+        padding: 0.3rem 1rem;
     }
 
     .hero-description {
@@ -679,16 +707,16 @@ body {
     background-color: var(--primary-color);
 }
 
-.service-list {
+.table-list {
     margin: 0;
     padding-left: 1.5rem;
 }
 
-.service-list li {
+.table-list li {
     margin-bottom: 0.5rem;
 }
 
-.service-list li:last-child {
+.table-list li:last-child {
     margin-bottom: 0;
 }
 
@@ -1256,5 +1284,226 @@ body {
 
 #content {
     display: none;
+}
+
+/* プライバシーポリシー説明のスタイル */
+.privacy-notice {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    background: #f8f9fa;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.privacy-notice h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.privacy-notice h3::before {
+    content: '\f05a'; /* Font Awesome の情報アイコン */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 0.8rem;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    opacity: 0.9;
+}
+
+/* ホバー時のエフェクト */
+.privacy-notice h3:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.privacy-content {
+    color: #555;
+    line-height: 1.7;
+}
+
+.privacy-text {
+    font-size: 0.95rem;
+}
+
+.privacy-text p {
+    margin-bottom: 1rem;
+}
+
+.privacy-text p:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-link {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.privacy-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.privacy-link a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+/* チェックボックスの追加 */
+.privacy-agreement {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.privacy-agreement input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.privacy-agreement label {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .privacy-notice {
+        padding: 1.2rem 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .privacy-text {
+        font-size: 0.9rem;
+    }
+
+    .privacy-notice h3 {
+        font-size: 1rem;
+    }
+}
+
+/* プライバシーポリシーページのスタイル */
+.privacy-policy-section {
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+.privacy-policy-section h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.privacy-policy-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.policy-item {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.policy-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.policy-item h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.policy-item h3 i {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.policy-item p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.policy-item ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.policy-item ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.policy-item ul li::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 0.7rem;
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.update-date {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .policy-content {
+        padding: 1.5rem;
+    }
+
+    .policy-item {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .policy-item h3 {
+        font-size: 1.1rem;
+    }
 }
 
