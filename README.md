@@ -118,3 +118,13 @@ hp_itsuki/
 
 ## メモ
 - ダミー画像記述：https://placehold.jp/350x250.png?text=
+
+
+
+
+# サーバ考察
+国内サーバで安くて安心なのは下記3つ
+- [ConoHa WING](https://www.conoha.jp/)
+- [XServer](https://www.xserver.ne.jp/)
+- [シンレンタルサーバー](https://www.shin-server.jp/)
+
