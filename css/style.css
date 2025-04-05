@@ -252,7 +252,7 @@ body {
 }
 
 .service-card {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -322,9 +322,16 @@ body {
     text-decoration: underline;
 }
 
+/* コンテンツ案内カード */
+.services-overview {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+    text-align: center;
+}
+
 /* フッタースタイル */
 .footer {
-    background-color: #333333;
+    background-color: var(--primary-color);
     padding: 40px 0 20px;
     margin-top: 60px;
     color: #fff;
@@ -379,7 +386,7 @@ body {
     text-align: center;
     padding-top: 20px;
     margin-top: 20px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .copyright {
@@ -388,11 +395,11 @@ body {
 }
 
 /* モバイル対応 */
-@media (max-width: 768px) {
+@media screen and (max-width: 767px) {
     /* ヒーロー */
     .hero {
-        height: calc(100vh - var(--header-height)); /* ビューポートの高さからヘッダーの高さを引く */
-        margin-top: var(--header-height); /* ヘッダーの高さ分のマージンを維持 */
+        height: calc(100vh - var(--header-height));
+        margin-top: var(--header-height);
     }
 
     .hero-title {
@@ -409,58 +416,95 @@ body {
         line-height: 1.6;
     }
 
-    /* モバイルメニュー */
-    .mobile-menu-btn {
+    /* セクションタイトル */
+    .service-section h2,
+    .company-section h2,
+    .contact-section h2,
+    .faq-section .page-header h2,
+    .privacy-policy-section .page-header h2 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    /* セクション共通 */
+    .service-section,
+    .company-section,
+    .contact-section,
+    .faq-section,
+    .privacy-policy-section {
+        padding: 40px 0;
+    }
+
+    /* テーブル */
+    .company-table,
+    .company-table tbody,
+    .company-table tr,
+    .service-table,
+    .service-table tbody,
+    .service-table tr {
         display: block;
-        background: none;
-        border: none;
-        font-size: 28px;
-        cursor: pointer;
     }
 
-    .nav-menu {
-        display: none; /* デフォルトでは非表示 */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: white;
-        width: 100%;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    .company-table tr,
+    .service-table tr {
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+        overflow: hidden;
     }
 
-    .nav-menu.active {
-        display: block; /* モバイル表示時に表示 */
-    }
-
-    .nav-menu li {
-        margin: 8px 0;
-        border-bottom: 1px solid #eee;
-    }
-
-    .nav-menu a {
-        display: block;
-        font-size: 1rem;
-        padding: 8px 0;
-        color: #333;
-        text-decoration: none;
-    }
-
-    /* 会社概要テーブル */
     .company-table th,
-    .company-table td {
-        padding: 15px;
+    .company-table td,
+    .service-table th,
+    .service-table td {
         display: block;
         width: 100%;
-    }
-
-    .company-table th {
         border-bottom: none;
-        padding-bottom: 5px;
     }
 
-    .company-table td {
-        padding-top: 5px;
+    .company-table th,
+    .service-table th {
+        background-color: #FFF3E0;
+        color: #333333;
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .company-table td,
+    .service-table td {
+        padding: 1rem;
+        background-color: var(--white);
+    }
+
+    /* サービスカード */
+    .service-content {
+        flex-direction: column;
+    }
+
+    .service-image {
+        width: 100%;
+        height: 200px;
+    }
+
+    .service-text {
+        width: 100%;
+        padding: 30px;
+        text-align: center;
+    }
+
+    /* ニュース */
+    .news-list {
+        padding: 10px;
+    }
+
+    .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .news-date {
+        margin-bottom: 5px;
     }
 
     /* フッター */
@@ -475,38 +519,37 @@ body {
         width: 100%;
     }
 
-    .service-content {
-        flex-direction: column;
-        align-items: center;
+    /* プライバシーポリシー */
+    .policy-content {
+        padding: 1.5rem;
     }
 
-    .service-image {
-        width: 100%;
-        max-width: none;
-        margin-bottom: 10px;
+    .policy-item {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
     }
 
-    .service-text {
-        width: 100%;
-        padding-left: 0;
-        text-align: center;
+    .policy-item h3 {
+        font-size: 1.1rem;
     }
 
-    .section-title {
-        font-size: 2em;
+    /* お問い合わせフォーム */
+    .contact-section {
+        padding: 40px 0;
     }
 
-    .news-list {
-        padding: 10px;
+    /* プライバシー通知 */
+    .privacy-notice {
+        padding: 1.2rem 1.5rem;
+        margin-top: 2rem;
     }
 
-    .news-item {
-        flex-direction: column;
-        align-items: flex-start;
+    .privacy-text {
+        font-size: 0.9rem;
     }
 
-    .news-date {
-        margin-bottom: 5px;
+    .privacy-notice h3 {
+        font-size: 1rem;
     }
 }
 
@@ -524,6 +567,13 @@ body {
     .hero-description {
         font-size: 0.9rem;
         line-height: 1.4;
+    }
+}
+
+/* タブレット対応 */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    #loginForm {
+        width: 80%;
     }
 }
 
@@ -589,15 +639,15 @@ body {
 .company-table th,
 .company-table td {
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #999999;
 }
 
 .company-table th {
     width: 25%;
     text-align: left;
     font-weight: bold;
-    background-color: #666666;
-    color: #fff;
+    background-color: #FFF3E0;
+    color: #333333;
 }
 
 .company-table td {
@@ -667,8 +717,8 @@ body {
     }
 
     .company-table th {
-        background-color: #666666;
-        color: #fff;
+        background-color: #FFF3E0;
+        color: #333333;
         padding: 0.8rem 1rem;
         font-size: 0.9rem;
     }
@@ -729,15 +779,15 @@ body {
 .service-table th,
 .service-table td {
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #999999;
 }
 
 .service-table th {
     width: 25%;
     text-align: left;
     font-weight: bold;
-    background-color: #666666;
-    color: #fff;
+    background-color: #FFF3E0;
+    color: #333333;
 }
 
 .service-table td {
@@ -749,7 +799,11 @@ body {
         padding: 40px 0;
     }
 
-    .service-section h2 {
+    .service-section h2,
+    .company-section h2,
+    .contact-section h2,
+    .faq-section .page-header h2,
+    .privacy-policy-section .page-header h2 {
         font-size: 1.6rem;
         margin-bottom: 2rem;
     }
@@ -776,8 +830,8 @@ body {
     }
 
     .service-table th {
-        background-color: #666666;
-        color: #fff;
+        background-color: #FFF3E0;
+        color: #333333;
         padding: 0.8rem 1rem;
         font-size: 0.9rem;
     }
@@ -933,8 +987,8 @@ body {
 
 .service-content {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .service-image {
@@ -1532,5 +1586,45 @@ body {
 .submit-btn:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+.service-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+.service-description {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 767px) {
+    /* ヒーロー */
+    .hero {
+        height: calc(100vh - var(--header-height));
+        margin-top: var(--header-height);
+    }
+
+    /* セクション共通 */
+    .service-section,
+    .company-section,
+    .contact-section,
+    .faq-section,
+    .privacy-policy-section {
+        padding: 40px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .faq-section {
+        padding: 40px 0 !important;
+    }
+    
+    .privacy-policy-section {
+        padding: 40px 0 !important;
+    }
 }
 

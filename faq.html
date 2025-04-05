@@ -6,6 +6,8 @@
     <title>よくあるご質問 | ケアぷらん樹</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js"></script>
+    <!-- js-yamlライブラリを先に読み込む -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 </head>
 <body>
     <!-- ヘッダー部分 -->
@@ -34,18 +36,12 @@
     <!-- フッター -->
     <div id="footer-placeholder"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/faq.js"></script>
     <script>
-        // DOMContentLoadedイベントの代わりに即時実行
-        window.onload = function() {
-            if (typeof loadFAQ === 'function') {
-                loadFAQ();
-            } else {
-                console.error('loadFAQ関数が見つかりません');
-            }
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFAQ();
+        });
     </script>
 </body>
 </html> 

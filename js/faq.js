@@ -12,41 +12,56 @@ async function loadFAQ() {
             throw new Error('Invalid FAQ markdown format');
         }
         const yamlSection = parts[1];
-        const faqData = jsyaml.load(yamlSection);
+        const data = jsyaml.load(yamlSection);
         
         const faqContainer = document.getElementById('faq-list');
         
-        faqData.questions.forEach(item => {
-            const faqHTML = `
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>${escapeHTML(item.question)}</h3>
-                        <span class="toggle-btn">＋</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>${escapeHTML(item.answer)}</p>
-                    </div>
+        data.questions.forEach((item, index) => {
+            const faqId = `faq-${index + 1}`;
+            const faqItem = document.createElement('div');
+            faqItem.className = 'faq-item';
+            faqItem.id = faqId;
+            
+            faqItem.innerHTML = `
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <h3>${escapeHTML(item.question)}</h3>
+                    <span class="toggle-btn">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>${escapeHTML(item.answer)}</p>
                 </div>
             `;
-            faqContainer.insertAdjacentHTML('beforeend', faqHTML);
-        });
+            
+            faqContainer.appendChild(faqItem);
 
-        // アコーディオン機能の設定
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const toggleBtn = question.querySelector('.toggle-btn');
-                
-                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-                toggleBtn.textContent = answer.style.display === 'block' ? '－' : '＋';
-            });
+            // URLのハッシュと一致する場合は自動的に開く
+            if (window.location.hash === `#${faqId}`) {
+                setTimeout(() => {
+                    const questionElement = faqItem.querySelector('.faq-question');
+                    questionElement.click();
+                    faqItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
         });
     } catch (error) {
         console.error('FAQの読み込みに失敗しました:', error);
         const faqList = document.getElementById('faq-list');
         if (faqList) {
-            faqList.innerHTML = '<p>FAQの読み込みに失敗しました。</p>';
+            faqList.innerHTML = '<p class="error-message">FAQの読み込みに失敗しました。</p>';
         }
+    }
+}
+
+function toggleAnswer(element) {
+    const answer = element.nextElementSibling;
+    const toggleBtn = element.querySelector('.toggle-btn');
+    
+    if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        toggleBtn.textContent = '+';
+    } else {
+        answer.style.display = 'block';
+        toggleBtn.textContent = '-';
     }
 }
 
