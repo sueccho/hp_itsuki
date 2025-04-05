@@ -196,7 +196,6 @@ body {
 .hero-subtitle .animate-text {
     position: relative;
     z-index: 2;
-    background: linear-gradient(transparent 60%, var(--primary-color) 60%);
     padding: 0.2em 0.5em;
     font-weight: bold;
     color: var(--white);
@@ -211,8 +210,7 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(45, 140, 75, 0.8); /* primary-colorを半透明に */
-    border-radius: 30px;
-    transform: skew(-5deg);
+    border-radius: 40px;
     z-index: 1;
 }
 

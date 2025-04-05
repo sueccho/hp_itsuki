@@ -39,7 +39,13 @@ async function loadFAQ() {
                 setTimeout(() => {
                     const questionElement = faqItem.querySelector('.faq-question');
                     questionElement.click();
-                    faqItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // ヘッダーの高さを考慮したスクロール位置調整
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const elementPosition = faqItem.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: elementPosition - headerHeight - 20, // ヘッダーの高さ + 余白
+                        behavior: 'smooth'
+                    });
                 }, 100);
             }
         });
