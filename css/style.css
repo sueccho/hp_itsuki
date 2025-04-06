@@ -1626,3 +1626,78 @@ body {
     }
 }
 
+/* 代表取締役ご挨拶セクション */
+.greeting-section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.greeting-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.greeting-text {
+    flex: 1;
+}
+
+.greeting-text h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.greeting-text h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.greeting-text p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.greeting-text .signature {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.greeting-image {
+    flex: 0 0 300px;
+}
+
+.greeting-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 767px) {
+    .greeting-content {
+        flex-direction: column;
+    }
+
+    .greeting-image {
+        flex: 0 0 auto;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .greeting-text h3 {
+        font-size: 1.5rem;
+    }
+}
+
