@@ -1701,3 +1701,59 @@ body {
     }
 }
 
+/* 関連資料セクション */
+.document-links {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+}
+
+.document-links h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.document-links p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.document-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.document-button {
+    flex: 1;
+    max-width: 300px;
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.document-button:hover {
+    background-color: #247a3d;
+}
+
+@media screen and (max-width: 767px) {
+    .document-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .document-button {
+        width: 100%;
+    }
+}
+

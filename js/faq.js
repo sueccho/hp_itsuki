@@ -22,13 +22,16 @@ async function loadFAQ() {
             faqItem.className = 'faq-item';
             faqItem.id = faqId;
             
+            // Markdown形式を変換
+            const convertedAnswer = convertMarkdown(item.answer);
+            
             faqItem.innerHTML = `
                 <div class="faq-question" onclick="toggleAnswer(this)">
                     <h3>${escapeHTML(item.question)}</h3>
                     <span class="toggle-btn">+</span>
                 </div>
                 <div class="faq-answer">
-                    <p>${escapeHTML(item.answer)}</p>
+                    <p>${convertedAnswer}</p>
                 </div>
             `;
             
@@ -79,4 +82,20 @@ function escapeHTML(str) {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+}
+
+// Markdownのリンクを変換する関数
+function convertMarkdownLinks(text) {
+    return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+}
+
+// Markdownの書式を変換する関数
+function convertMarkdown(text) {
+    // まずHTMLエスケープを行う
+    let converted = escapeHTML(text);
+    // リンクを変換
+    converted = convertMarkdownLinks(converted);
+    // 2つの半角スペースを<br>に変換
+    converted = converted.replace(/  /g, '<br>');
+    return converted;
 } 
