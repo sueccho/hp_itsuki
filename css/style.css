@@ -19,7 +19,6 @@ body {
     font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    -webkit-text-size-adjust: 100%;
 }
 
 /* ヘッダースタイル */
