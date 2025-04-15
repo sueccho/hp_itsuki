@@ -19,6 +19,7 @@ body {
     font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    -webkit-text-size-adjust: 100%;
 }
 
 /* ヘッダースタイル */
@@ -1297,7 +1298,7 @@ body {
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 1rem;
+    /* font-size: 1rem; */
 }
 
 #loginForm button {
@@ -1329,7 +1330,7 @@ body {
 
     #loginForm input {
         padding: 0.6rem;
-        font-size: 0.9rem;
+        /* font-size: 0.9rem; */
     }
 
     #loginForm button {
