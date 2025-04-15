@@ -215,7 +215,7 @@ body {
 }
 
 .hero-description {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     margin-top: 1.5rem;
     line-height: 1.8;
 }
@@ -401,16 +401,16 @@ body {
     }
 
     .hero-title {
-        font-size: 1.5rem;
+        font-size: 2.4rem;
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.6rem;
         padding: 0.4rem 1.5rem;
     }
 
     .hero-description {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         line-height: 1.6;
     }
 

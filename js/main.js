@@ -1,7 +1,7 @@
 // ヒーローセクションのテキストアニメーション
 function animateHeroText() {
-    const textElements = document.querySelectorAll('.animate-text');
     const fadeElements = document.querySelectorAll('.animate-fade');
+    const textElements = document.querySelectorAll('.animate-text');
 
     // アニメーションをリセット
     textElements.forEach(element => {
@@ -25,7 +25,7 @@ function animateHeroText() {
     });
 
     // 最後の要素のアニメーション完了から5秒後に再度アニメーションを実行
-    const totalAnimationTime = (textElements.length * 400) + 5000;
+    const totalAnimationTime = (textElements.length * 400) + 10000;
     setTimeout(animateHeroText, totalAnimationTime);
 }
 
