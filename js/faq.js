@@ -42,13 +42,15 @@ async function loadFAQ() {
                 setTimeout(() => {
                     const questionElement = faqItem.querySelector('.faq-question');
                     questionElement.click();
-                    // ヘッダーの高さを考慮したスクロール位置調整
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const elementPosition = faqItem.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({
-                        top: elementPosition - headerHeight - 20, // ヘッダーの高さ + 余白
-                        behavior: 'smooth'
-                    });
+                    // スクロール位置の計算を遅延させる
+                    setTimeout(() => {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const elementPosition = faqItem.getBoundingClientRect().top + window.scrollY;
+                        window.scrollTo({
+                            top: elementPosition - headerHeight - 20,
+                            behavior: 'smooth'
+                        });
+                    }, 200);
                 }, 100);
             }
         });
