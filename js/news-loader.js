@@ -115,7 +115,7 @@ function displayNewsPage(page) {
                 <div class="news-item">
                     <span class="news-date">${dateStr}</span>
                     <span class="news-category">${item.category}</span>
-                    <a href="${item.link || '#'}" class="news-link">${item.title}</a>
+                    ${item.link !== '#' ? `<a href="${item.link}" class="news-link">${item.title}</a>` : `<span class="news-title">${item.title}</span>`}
                 </div>
             `;
             

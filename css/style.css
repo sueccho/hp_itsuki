@@ -279,9 +279,10 @@ body {
 
 /* お知らせセクション */
 .news-list {
+    list-style: none;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .news-item {
@@ -478,6 +479,11 @@ body {
     /* サービスカード */
     .service-content {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .service-title {
+        text-align: center;
     }
 
     .service-image {
@@ -485,20 +491,11 @@ body {
         height: 200px;
     }
 
-    .service-text {
-        width: 100%;
-        padding: 30px;
-        text-align: center;
-    }
-
     /* ニュース */
-    .news-list {
-        padding: 10px;
-    }
-
     .news-item {
         flex-direction: column;
         align-items: flex-start;
+        gap: 6px;
     }
 
     .news-date {
@@ -569,7 +566,7 @@ body {
 }
 
 /* タブレット対応 */
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 767px) {
     #loginForm {
         width: 80%;
     }
@@ -671,7 +668,7 @@ body {
 }
 
 /* モバイルメニュー */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .mobile-menu-btn {
         display: block; /* モバイル表示時に表示 */
         background: none;
@@ -679,6 +676,31 @@ body {
         font-size: 28px;
         cursor: pointer;
         padding: 10px; /* クリックしやすくするためのパディング */
+    }
+
+    .privacy-notice {
+        padding: 1.2rem 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .privacy-text {
+        font-size: 0.9rem;
+    }
+
+    .privacy-notice h3 {
+        font-size: 1rem;
+    }
+    .policy-content {
+        padding: 1.5rem;
+    }
+
+    .policy-item {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .policy-item h3 {
+        font-size: 1.1rem;
     }
 }
 
@@ -973,11 +995,6 @@ body {
     margin-top: 40px;
 }
 
-.news-list {
-    list-style: none;
-    padding: 0;
-}
-
 .news-list li {
     padding: 10px 0;
     border-bottom: 1px solid #e0e0e0;
@@ -1001,13 +1018,6 @@ body {
     padding-left: 0;
     text-align: left;
     line-height: 1.6;
-}
-
-/* モバイル対応 */
-@media (max-width: 768px) {
-    .service-text {
-        text-align: center;
-    }
 }
 
 .contact-section {
@@ -1077,6 +1087,7 @@ body {
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 1rem;
 }
 
 .submit-btn {
@@ -1201,7 +1212,7 @@ body {
     padding: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .hamburger {
         display: block;
     }
@@ -1327,8 +1338,8 @@ body {
     }
 }
 
-/* タブレット対応 */
-@media screen and (min-width: 481px) and (max-width: 768px) {
+/* スマホ対応 */
+@media screen and (min-width: 481px) and (max-width: 767px) {
     #loginForm {
         width: 80%;
     }
@@ -1430,22 +1441,6 @@ body {
     color: #333;
 }
 
-/* モバイル対応 */
-@media (max-width: 768px) {
-    .privacy-notice {
-        padding: 1.2rem 1.5rem;
-        margin-top: 2rem;
-    }
-
-    .privacy-text {
-        font-size: 0.9rem;
-    }
-
-    .privacy-notice h3 {
-        font-size: 1rem;
-    }
-}
-
 /* プライバシーポリシーページのスタイル */
 .privacy-policy-section {
     padding: 80px 0;
@@ -1543,22 +1538,6 @@ body {
     text-align: right;
 }
 
-/* モバイル対応 */
-@media (max-width: 768px) {
-    .policy-content {
-        padding: 1.5rem;
-    }
-
-    .policy-item {
-        margin-bottom: 2rem;
-        padding-bottom: 1.5rem;
-    }
-
-    .policy-item h3 {
-        font-size: 1.1rem;
-    }
-}
-
 /* フォーム送信状態のスタイル */
 .form-status {
     margin-top: 1rem;
@@ -1638,7 +1617,7 @@ body {
 .greeting-content {
     display: flex;
     gap: 40px;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .greeting-text {
@@ -1675,7 +1654,7 @@ body {
 }
 
 .greeting-image {
-    flex: 0 0 500px;
+    flex: 0 0 50%;
 }
 
 .greeting-image img {
@@ -1730,7 +1709,7 @@ body {
 
 .document-button {
     flex: 1;
-    max-width: 300px;
+    max-width: 30%;
     padding: 15px 30px;
     background-color: var(--primary-color);
     color: var(--white);
@@ -1750,10 +1729,12 @@ body {
     .document-buttons {
         flex-direction: column;
         gap: 15px;
+        align-items: center;
     }
     
     .document-button {
         width: 100%;
+        max-width: 300px;
     }
 }
 
