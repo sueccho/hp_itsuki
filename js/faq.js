@@ -45,11 +45,20 @@ async function loadFAQ() {
                     // スクロール位置の計算を遅延させる
                     setTimeout(() => {
                         const headerHeight = document.querySelector('.header').offsetHeight;
-                        const elementPosition = faqItem.getBoundingClientRect().top + window.scrollY;
-                        window.scrollTo({
-                            top: elementPosition - headerHeight - 20,
-                            behavior: 'smooth'
-                        });
+                        const element = document.getElementById(faqId);
+                        const elementTop = element.offsetTop;
+                        const scrollPosition = elementTop - headerHeight - 20;
+                        
+                        // iOS Safari用のスクロール処理
+                        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                            document.body.scrollTop = scrollPosition;
+                            document.documentElement.scrollTop = scrollPosition;
+                        } else {
+                            window.scrollTo({
+                                top: scrollPosition,
+                                behavior: 'smooth'
+                            });
+                        }
                     }, 200);
                 }, 100);
             }
