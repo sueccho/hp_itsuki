@@ -130,12 +130,6 @@ function displayNewsPage(page) {
     
     // ページネーションを更新
     updatePagination();
-
-    // お知らせセクションまでスクロール
-    const newsSection = document.querySelector('.news-section');
-    if (newsSection) {
-        newsSection.scrollIntoView({ behavior: 'smooth' });
-    }
 }
 
 function updatePagination() {
@@ -187,6 +181,11 @@ function updatePagination() {
         button.addEventListener('click', () => {
             const page = parseInt(button.getAttribute('data-page'));
             displayNewsPage(page);
+            // お知らせセクションまでスクロール
+            const newsSection = document.querySelector('.news-section');
+            if (newsSection) {
+                newsSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 }
