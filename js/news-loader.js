@@ -51,7 +51,7 @@ function parseMarkdownToNewsItems(mdContent) {
             // 新しいアイテムを作成
             const titleMatch = line.match(/## (.*)/);
             currentItem = {
-                title: titleMatch ? titleMatch[1].trim() : '',
+                title: titleMatch ? parseBold(titleMatch[1].trim()) : '',
                 date: '',
                 category: '',
                 link: '#'
@@ -89,6 +89,11 @@ function parseMarkdownToNewsItems(mdContent) {
     return newsItems.sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
     });
+}
+
+// 太字のマークダウンをHTMLに変換する関数
+function parseBold(text) {
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 }
 
 function displayNewsPage(page) {

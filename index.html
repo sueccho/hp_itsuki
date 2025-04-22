@@ -5,142 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ケアぷらん樹 | 介護サービス</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/main.js" defer></script>
     <script src="js/news-loader.js" defer></script>
-    <!-- ログイン画面 -->
-    <script>
-        function checkAccess(event) {
-            event.preventDefault();
-            const correctUser = "haro";  // ここでIDを設定
-            const correctPass = "smile";  // ここでパスワードを設定
-
-            const user = document.getElementById("username").value;
-            const pass = document.getElementById("password").value;
-
-            if (user === correctUser && pass === correctPass) {
-                alert("Access Granted!");
-                document.getElementById("loginContainer").style.display = "none";
-                document.getElementById("content").style.display = "block";
-                document.body.style.height = "auto"; // bodyの高さをリセット
-                document.body.style.display = "block"; // bodyの表示をリセット
-            } else {
-                alert("Access Denied!");
-                window.location.href = "https://www.google.com/";
-            }
-        }
-    </script>
-    <!-- ログイン画面ここまで -->
-    </head>
-    <body>
-        <!-- ログイン画面 -->
-        <div id="loginContainer">
-            <div id="loginForm">
-                <form onsubmit="checkAccess(event)">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                    <br>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    <br>
-                    <button type="submit">Login</button>
-                </form>
+</head>
+<body>
+    <!-- ヘッダー部分を修正 -->
+    <header class="header">
+        <div id="header-placeholder"></div>
+    </header>
+    <main>
+        <!-- ヒーローセクション -->
+        <section class="hero">
+            <div class="hero-slider">
+                <div class="slide active" style="background-image: url('images/hero.jpg')">
+                    <div class="slide-overlay">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                <span class="animate-text">あなたの「○○がしたい」を一緒に叶えましょう</span>
+                            </h1>
+                            <p class="hero-subtitle animate-fade">
+                                <span class="animate-text">介護・福祉歴20年の実績と信頼</span>
+                            </p>
+                            <p class="hero-description">
+                                <span class="animate-text">主任ケアマネージャー・介護福祉士の資格を持つケアマネ経験6年・介護福祉士歴10年以上のプロが、一人ひとりの想いに寄り添い支援いたします。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- ログイン画面ここまで -->
+        </section>
 
-        <div id="content" style="display:none;">
-        <!-- ここからがindex.htmlのコンテンツ -->
-            <!-- ヘッダー部分を修正 -->
-            <header class="header">
-                <div id="header-placeholder"></div>
-            </header>
-            <main>
-                <!-- ヒーローセクション -->
-                <section class="hero">
-                    <div class="hero-slider">
-                        <div class="slide active" style="background-image: url('images/hero.jpg')">
-                            <div class="slide-overlay">
-                                <div class="hero-content">
-                                    <h1 class="hero-title">
-                                        <span class="animate-text">あなたの「○○がしたい」を一緒に叶えましょう</span>
-                                    </h1>
-                                    <p class="hero-subtitle animate-fade">
-                                        <span class="animate-text">介護・福祉歴20年の実績と信頼</span>
-                                    </p>
-                                    <p class="hero-description">
-                                        <span class="animate-text">主任ケアマネージャー・介護福祉士の資格を持つケアマネ経験6年・介護福祉士歴10年以上のプロが、一人ひとりの想いに寄り添い支援いたします。</span>
-                                    </p>
-                                </div>
+        <!-- お知らせセクション -->
+        <section class="news-section section">
+            <div class="container">
+                <h2 class="section-title">お知らせ</h2>
+                <div id="news-list" class="news-list">
+                    <!-- ここにJavaScriptでニュースアイテムが挿入されます -->
+                    <div class="loading-indicator">読み込み中...</div>
+                </div>
+                <div class="news-pagination" id="news-pagination">
+                    <!-- ページネーションがここに挿入されます -->
+                </div>
+            </div>
+        </section>
+
+        <!-- コンテンツ案内カード -->
+        <section class="services-overview section">
+            <div class="container">
+                <h2 class="section-title">コンテンツ案内</h2>
+                <div class="service-cards">
+                    <div class="service-card animate-on-scroll">
+                        <a href="company.html" class="service-content">
+                            <img src="images/top_company.jpg" alt="会社概要" class="service-image">
+                            <div class="service-text">
+                                <h3 class="service-title">会社概要</h3>
+                                <p class="service-description">ケアぷらん樹は、介護・福祉の専門家として20年以上の実績を持つ会社です。経験豊富なスタッフが、一人ひとりのニーズに寄り添い、質の高い介護サービスを提供しています。地域に密着した支援を通じて、利用者様とそのご家族の安心した生活をサポートします。</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </section>
-
-                <!-- お知らせセクション -->
-                <section class="news-section section">
-                    <div class="container">
-                        <h2 class="section-title">お知らせ</h2>
-                        <div id="news-list" class="news-list">
-                            <!-- ここにJavaScriptでニュースアイテムが挿入されます -->
-                            <div class="loading-indicator">読み込み中...</div>
-                        </div>
-                        <div class="news-pagination" id="news-pagination">
-                            <!-- ページネーションがここに挿入されます -->
-                        </div>
+                    <div class="service-card animate-on-scroll">
+                        <a href="services.html" class="service-content">
+                            <img src="images/top_service.jpg" alt="サービス案内" class="service-image">
+                            <div class="service-text">
+                                <h3 class="service-title">サービス案内</h3>
+                                <p class="service-description">訪問介護、デイサービス、ショートステイなど、多様な介護サービスを提供しています。専門のケアマネージャーが、利用者様の状況に応じて最適なサービスを提案し、充実した生活をサポートいたします。また、介護予防サービスも充実させ、健康維持・向上にも取り組んでいます。</p>
+                            </div>
+                        </a>
                     </div>
-                </section>
-
-                <!-- コンテンツ案内カード -->
-                <section class="services-overview section">
-                    <div class="container">
-                        <h2 class="section-title">コンテンツ案内</h2>
-                        <div class="service-cards">
-                            <div class="service-card animate-on-scroll">
-                                <a href="company.html" class="service-content">
-                                    <img src="images/top_company.jpg" alt="会社概要" class="service-image">
-                                    <div class="service-text">
-                                        <h3 class="service-title">会社概要</h3>
-                                        <p class="service-description">ケアぷらん樹は、介護・福祉の専門家として20年以上の実績を持つ会社です。経験豊富なスタッフが、一人ひとりのニーズに寄り添い、質の高い介護サービスを提供しています。地域に密着した支援を通じて、利用者様とそのご家族の安心した生活をサポートします。</p>
-                                    </div>
-                                </a>
+                    <div class="service-card animate-on-scroll">
+                        <a href="contact.html" class="service-content">
+                            <img src="images/top_contact.jpg" alt="お問合せ" class="service-image">
+                            <div class="service-text">
+                                <h3 class="service-title">お問合せ</h3>
+                                <p class="service-description">介護サービスに関するご相談・お問い合わせは、お気軽にお電話またはメールにてご連絡ください。経験豊富なスタッフが丁寧にご対応させていただきます。ご相談は無料で承っておりますので、お気軽にお問い合わせください。</p>
                             </div>
-                            <div class="service-card animate-on-scroll">
-                                <a href="services.html" class="service-content">
-                                    <img src="images/top_service.jpg" alt="サービス案内" class="service-image">
-                                    <div class="service-text">
-                                        <h3 class="service-title">サービス案内</h3>
-                                        <p class="service-description">訪問介護、デイサービス、ショートステイなど、多様な介護サービスを提供しています。専門のケアマネージャーが、利用者様の状況に応じて最適なサービスを提案し、充実した生活をサポートいたします。また、介護予防サービスも充実させ、健康維持・向上にも取り組んでいます。</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="service-card animate-on-scroll">
-                                <a href="contact.html" class="service-content">
-                                    <img src="images/top_contact.jpg" alt="お問合せ" class="service-image">
-                                    <div class="service-text">
-                                        <h3 class="service-title">お問合せ</h3>
-                                        <p class="service-description">介護サービスに関するご相談・お問い合わせは、お気軽にお電話またはメールにてご連絡ください。経験豊富なスタッフが丁寧にご対応させていただきます。ご相談は無料で承っておりますので、お気軽にお問い合わせください。</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="service-card animate-on-scroll">
-                                <a href="faq.html" class="service-content">
-                                    <img src="images/top_faq.jpg" alt="FAQ" class="service-image">
-                                    <div class="service-text">
-                                        <h3 class="service-title">FAQ</h3>
-                                        <p class="service-description">介護サービスに関するよくあるご質問をまとめました。サービス利用の流れ、費用について、利用可能な地域、スタッフの資格など、多くの方から寄せられる質問と回答をご覧いただけます。ご不明な点がございましたら、お気軽にお問い合わせください。</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
-                </section>
+                    <div class="service-card animate-on-scroll">
+                        <a href="faq.html" class="service-content">
+                            <img src="images/top_faq.jpg" alt="FAQ" class="service-image">
+                            <div class="service-text">
+                                <h3 class="service-title">FAQ</h3>
+                                <p class="service-description">介護サービスに関するよくあるご質問をまとめました。サービス利用の流れ、費用について、利用可能な地域、スタッフの資格など、多くの方から寄せられる質問と回答をご覧いただけます。ご不明な点がございましたら、お気軽にお問い合わせください。</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            </main>
-            <!-- フッター -->
-            <div id="footer-placeholder"></div>
-            <script src="js/common.js"></script>
-            <!-- フッターここまで -->
-        </div>
-        <!-- ここまでがindex.htmlのコンテンツ -->
-        </body>
-    </html>
+    </main>
+    <!-- フッター -->
+    <div id="footer-placeholder"></div>
+    <script src="js/common.js"></script>
+    <!-- フッターここまで -->
+</body>
+</html>

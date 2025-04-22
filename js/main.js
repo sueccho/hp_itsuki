@@ -126,3 +126,55 @@ function initFlowAnimation() {
 document.addEventListener('DOMContentLoaded', () => {
     initFlowAnimation();
 }); 
+
+// スライドショー機能
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    const prevButton = document.querySelector('.prev-slide');
+    const nextButton = document.querySelector('.next-slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // 自動スライド
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    // ボタンクリック時のイベント
+    nextButton.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        nextSlide();
+        slideInterval = setInterval(nextSlide, 5000);
+    });
+
+    prevButton.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        prevSlide();
+        slideInterval = setInterval(nextSlide, 5000);
+    });
+
+    // スライド切り替え時のアニメーション
+    slides.forEach(slide => {
+        slide.addEventListener('transitionend', () => {
+            if (slide.classList.contains('active')) {
+                slide.querySelectorAll('.animate-text').forEach(text => {
+                    text.style.animation = 'none';
+                    text.offsetHeight; // リフローを強制
+                    text.style.animation = null;
+                });
+            }
+        });
+    });
+}); 
