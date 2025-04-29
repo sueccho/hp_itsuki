@@ -8,15 +8,30 @@
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script type="text/javascript">
         (function() {
             // EmailJSの初期化（ページ読み込み時に実行）
             emailjs.init("02-eF8j5-Mbnaw9va"); // ここにEmailJSのPublic Keyを設定
         })();
 
+        // reCAPTCHAの状態を監視する関数
+        function enableSubmitButton() {
+            const submitBtn = document.getElementById('submitBtn');
+            const response = grecaptcha.getResponse();
+            submitBtn.disabled = !response;
+        }
+
         function sendMail(event) {
             event.preventDefault();
             
+            // reCAPTCHAの検証
+            const response = grecaptcha.getResponse();
+            if (!response) {
+                alert('reCAPTCHAの認証を行ってください。');
+                return;
+            }
+
             // 送信ボタンを無効化
             const submitBtn = document.getElementById('submitBtn');
             const formStatus = document.getElementById('formStatus');
@@ -45,6 +60,7 @@
                 .then(function(response) {
                     formStatus.innerHTML = '<div class="success-message">お問い合わせを受け付けました。<br>内容を確認次第、担当者よりご連絡させていただきます。</div>';
                     document.getElementById('contactForm').reset();
+                    grecaptcha.reset();
                 }, function(error) {
                     formStatus.innerHTML = '<div class="error-message">送信に失敗しました。<br>お手数ですが、時間をおいて再度お試しください。</div>';
                     console.error('EmailJS送信エラー:', error);
@@ -108,9 +124,12 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="submit-btn" id="submitBtn">送信する</button>
+                        <div class="g-recaptcha" data-sitekey="6LcKjCgrAAAAADGL0UBYxZ5RPUsloI9k9cWJd_Rj" data-callback="enableSubmitButton"></div>
                     </div>
-                    <!-- 送信状態表示用の要素を追加 -->
+
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn" id="submitBtn" disabled>送信する</button>
+                    </div>
                     <div id="formStatus" class="form-status"></div>
                 </form>
 
