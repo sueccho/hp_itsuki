@@ -50,7 +50,9 @@
                 from_name: name,
                 from_email: email,
                 phone: phone,
-                subject: subject,
+                subject: subject === 'consultation' ? '介護相談' : 
+                        subject === 'service' ? 'サービスについて' : 
+                        subject === 'other' ? 'その他' : subject,
                 message: message,
                 to_email: "careplanitsuki@gmail.com"
             };
