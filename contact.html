@@ -12,7 +12,7 @@
     <script type="text/javascript">
         (function() {
             // EmailJSの初期化（ページ読み込み時に実行）
-            emailjs.init("02-eF8j5-Mbnaw9va"); // ここにEmailJSのPublic Keyを設定
+            emailjs.init("_9kqBU4yGpjuFwWcS"); // ここにEmailJSのPublic Keyを設定
         })();
 
         // reCAPTCHAの状態を監視する関数
@@ -52,11 +52,11 @@
                 phone: phone,
                 subject: subject,
                 message: message,
-                to_email: "sueccho@gmail.com"
+                to_email: "careplanitsuki@gmail.com"
             };
 
             // EmailJSを使用してメール送信
-            emailjs.send('service_qpp4grg', 'template_jm5piws', templateParams)
+            emailjs.send('service_8g4z15n', 'template_xppje39', templateParams)
                 .then(function(response) {
                     formStatus.innerHTML = '<div class="success-message">お問い合わせを受け付けました。<br>内容を確認次第、担当者よりご連絡させていただきます。</div>';
                     document.getElementById('contactForm').reset();
@@ -124,7 +124,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="g-recaptcha" data-sitekey="6LcKjCgrAAAAADGL0UBYxZ5RPUsloI9k9cWJd_Rj" data-callback="enableSubmitButton"></div>
+                        <div class="g-recaptcha" data-sitekey="6LcX4CgrAAAAAE78XsvxYSKFSqB9l7pn6XhgfQPC" data-callback="enableSubmitButton"></div>
                     </div>
 
                     <div class="form-group">
