@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markdownファイルの修正方法ガイド</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
@@ -323,94 +324,75 @@
         }
         footer {
             margin-top: 100px;
-            padding: 60px 0 40px;
+            padding: 30px 0;
             background-color: #2c3e50;
             color: #fff;
             width: 100%;
+            text-align: center;
         }
         .footer-content {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
         }
-        .footer-company {
-            line-height: 1.8;
+        .footer-content p {
+            margin: 0;
+            line-height: 2;
         }
-        .footer-company h3 {
-            margin-top: 0;
-            color: #fff;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        .footer-company h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #3498db;
-        }
-        .footer-links {
-            line-height: 1.8;
-        }
-        .footer-links h3 {
-            margin-top: 0;
-            color: #fff;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        .footer-links h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #3498db;
-        }
-        .footer-links a {
+        .footer-content a {
             color: #fff;
             text-decoration: none;
             transition: color 0.3s ease;
+            margin: 0 15px;
+            font-size: 1.2em;
         }
-        .footer-links a:hover {
+        .footer-content a:hover {
             color: #3498db;
-            text-decoration: none;
-        }
-        .footer-company a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-company a:hover {
-            color: #3498db;
-            text-decoration: none;
         }
         .copyright {
-            text-align: center;
-            margin-top: 40px;
+            margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: rgba(255,255,255,0.7);
             font-size: 0.9em;
         }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #3498db;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .scroll-to-top i {
+            font-size: 1.2em;
+        }
         @media screen and (max-width: 768px) {
-            footer {
-                margin-top: 60px;
-                padding: 40px 0 30px;
-            }
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 0 15px;
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -651,24 +633,41 @@ questions:
 
     <footer>
         <div class="footer-content">
-            <div class="footer-company">
-                <h3>会社情報</h3>
-                <p>株式会社ハロスマイル<br>
-                〒819-0007<br>
-                福岡市西区愛宕南1丁目1-39-301<br>
-                TEL: <a href="tel:092-985-8138">092-985-8138</a><br>
-                メール: <a href="mailto:info@harosmile.com">info@harosmile.com</a> または <a href="mailto:harosmile.s@gmail.com">harosmile.s@gmail.com</a></p>
-            </div>
-            <div class="footer-links">
-                <h3>リンク</h3>
-                <p><a href="https://harosmile.com" target="_blank">ホームページ</a><br>
-                <a href="https://harosmile.com/contact/" target="_blank">お問い合わせ</a><br>
-                <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">ページトップ</a></p>
-            </div>
+            <p>
+                株式会社ハロスマイル
+                <a href="https://harosmile.com" target="_blank" title="ホームページへ"><i class="fas fa-home"></i></a>
+            </p>
         </div>
         <div class="copyright">
             © 2024 株式会社ハロスマイル All Rights Reserved.
         </div>
     </footer>
+
+    <div class="scroll-to-top" title="ページトップへ">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTop = document.querySelector('.scroll-to-top');
+            
+            // スクロール時の表示制御
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    scrollToTop.classList.add('show');
+                } else {
+                    scrollToTop.classList.remove('show');
+                }
+            });
+            
+            // クリック時の動作
+            scrollToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
