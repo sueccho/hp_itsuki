@@ -37,6 +37,22 @@
             const formStatus = document.getElementById('formStatus');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '送信中...';
+
+            // reCAPTCHAトークンをサーバーへ送信して検証
+            fetch('verify_recaptcha.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `g-recaptcha-response=${encodeURIComponent(response)}`
+            })
+            .then(res => res.json())
+            .then(data => {
+            if (!data.success) {
+            formStatus.innerHTML = '<div class="error-message">reCAPTCHAの検証に失敗しました。</div>';
+            grecaptcha.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '送信する';
+            return;
+            }
             
             // フォームデータの取得
             const name = document.getElementById('name').value;

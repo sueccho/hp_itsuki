@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('Method Not Allowed');
 }
 
-$recaptcha_secret = '6LcX4CgrAAAAAANtoVxJT_qZwRNBVN_NDmmB15rO';
+$recaptcha_secret = '6LcX4CgrAAAAAE78XsvxYSKFSqB9l7pn6XhgfQPC';
 $response = $_POST['g-recaptcha-response'];
 $remoteip = $_SERVER['REMOTE_ADDR'];
 
