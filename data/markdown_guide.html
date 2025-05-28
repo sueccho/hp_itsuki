@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdownファイルの修正方法ガイド</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header img {
+            max-width: 200px;
+            height: auto;
+        }
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .title-section {
+            padding: 40px 0 30px;
+            margin: 0 0 40px;
+            border-bottom: 2px solid #3498db;
+        }
+        .title-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .main-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+            font-size: 1.5em;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 1.2em;
+        }
+        .code-block {
+            background-color: #ffffff;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+            color: #2c3e50;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .point-list {
+            background-color: #fff5f5;
+            padding: 20px 20px 20px 35px;
+            margin: 15px 0;
+            border-radius: 8px;
+            position: relative;
+        }
+        .point-list ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .point-list li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        .point-list li:last-child {
+            margin-bottom: 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        code {
+            background-color: #e8f4f8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .contact-info {
+            background-color: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .step-by-step {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .step {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        .title-section h1 {
+            border: none;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        @media screen and (max-width: 768px) {
+            .header-content {
+                padding: 0 15px;
+            }
+            .content {
+                padding: 15px;
+            }
+            .header img {
+                max-width: 40%;
+            }
+            .title-section {
+                padding: 30px 0 20px;
+            }
+            .main-title {
+                font-size: 1.6em;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+            h2 {
+                font-size: 1.4em;
+                margin-top: 20px;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            .code-block {
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 0.9em;
+                line-height: 1.5;
+            }
+            .point-list {
+                padding: 15px 15px 15px 30px;
+            }
+            .point-list::before {
+                left: 8px;
+                top: 15px;
+            }
+            .warning, .contact-info {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            .step-by-step {
+                padding: 10px;
+                margin: 10px 0;
+            }
+            .step {
+                margin-bottom: 10px;
+                padding-left: 10px;
+            }
+            code {
+                padding: 2px 4px;
+                font-size: 0.9em;
+            }
+            ul, ol {
+                padding-left: 20px;
+            }
+        }
+        .contact-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 100px;
+            padding: 60px 0 40px;
+            background-color: #2c3e50;
+            color: #fff;
+            width: 100%;
+        }
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-company {
+            line-height: 1.8;
+        }
+        .footer-company h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-company h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #3498db;
+        }
+        .footer-links {
+            line-height: 1.8;
+        }
+        .footer-links h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #3498db;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .footer-company a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-company a:hover {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9em;
+        }
+        @media screen and (max-width: 768px) {
+            footer {
+                margin-top: 60px;
+                padding: 40px 0 30px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="https://harosmile.com/wp-content/uploads/2024/06/a558aeb288f11fd3b37a15bc2fd6275b-1024x218.png" alt="ハロスマイル">
+        </div>
+    </div>
+    <div class="content">
+        <div class="title-section">
+            <div class="title-content">
+                <h1 class="main-title">Markdownファイルの修正方法</h1>
+            </div>
+        </div>
+
+        <h2>修正の基本フロー</h2>
+        <div class="step-by-step">
+            <div class="step">
+                <ol>
+                    <li>1. <a href="#xserver-access">XServerへのアクセス</a>
+                        <ul>
+                            <li>ログイン</li>
+                            <li>ファイルマネージャーの操作</li>
+                        </ul>
+                    </li>
+                    <li>2. <a href="#file-edit">ファイルの修正</a>
+                        <ul>
+                            <li>FAQの修正（faq.md）</li>
+                            <li>ニュースの修正（news.md）</li>
+                        </ul>
+                    </li>
+                    <li>3. <a href="#upload-confirm">アップロードと確認</a>
+                        <ul>
+                            <li>修正ファイルのアップロード</li>
+                            <li>表示確認</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <h2 id="xserver-access">XServerへのアクセス方法</h2>
+        <div class="step-by-step">
+            <h3>XServerのファイルマネージャーへのアクセス手順</h3>
+            <div class="step">
+                <ol>
+                    <li>以下のURL（サーバーパネル ログイン）にアクセスします：<br>
+                        <code>https://secure.xserver.ne.jp/xapanel/login/xserver/server/</code></li>
+                    <li>ログイン情報を入力：
+                        <ul>
+                            <li>ID：<code>XXXXX</code></li>
+                            <li>パスワード：<code>XXXXX</code></li>
+                        </ul>
+                    </li>
+                    <li>認証コードが <code>cp-itsuki@outlook.jp</code> に送信されます</li>
+                    <li>メールで受け取った認証コードを入力してログインします</li>
+                    <li>ログイン後、「ファイルマネージャー」をクリックします</li>
+                    <li>ファイルマネージャーの画面で必要なファイルの操作（ダウンロード・アップロード）ができます</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="point-list">
+            <h3>ファイルマネージャーでの操作方法</h3>
+            <ol>
+                <li><strong>ファイルのダウンロード：</strong>
+                    <ul>
+                        <li>対象のファイルを選択</li>
+                        <li>「ダウンロード」ボタンをクリック</li>
+                        <li>ファイルがローカルPCに保存されます</li>
+                    </ul>
+                </li>
+                <li><strong>ファイルのアップロード：</strong>
+                    <ul>
+                        <li>「アップロード」ボタンをクリック</li>
+                        <li>アップロードするファイルを選択</li>
+                        <li>アップロード完了を確認</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <p><strong>セキュリティに関する注意事項：</strong></p>
+            <ul>
+                <li>ログイン情報は厳重に管理してください</li>
+                <li>認証コードは第三者に開示しないでください</li>
+                <li>作業が終わったら必ずログアウトしてください</li>
+                <li>ブラウザの「戻る」ボタンは使用せず、必ずファイルマネージャーの機能を使用してください</li>
+            </ul>
+        </div>
+
+        <div class="step-by-step">
+            <h3>作業を始める前に以下の準備をしてください</h3>
+            <div class="step">
+                <ol>
+                    <li>XServerにログインし、ファイルマネージャーを開きます（<a href="#xserver-access">アクセス方法</a>を参照）</li>
+                    <li>修正したいファイル（faq.mdまたはnews.md）をファイルマネージャーからダウンロードします</li>
+                    <li>念のため、修正前のファイルをバックアップとしてローカルに保存しておきます</li>
+                    <li>テキストエディタ（メモ帳、VSCode等）で開きます</li>
+                </ol>
+            </div>
+        </div>
+
+        <h2 id="file-edit">ファイルの修正</h2>
+        <h2>FAQの修正方法（faq.md）</h2>
+        <p>FAQファイルは質問と回答のペアで構成されています。以下の手順で修正してください：</p>
+
+        <div class="step-by-step">
+            <h3>新しい質問を追加する場合</h3>
+            <div class="step">
+                <ol>
+                    <li>ファイルの中程にある他の質問と回答の形式を参考にします</li>
+                    <li>最後の質問の後ろに、2行の空白を入れます</li>
+                    <li>以下の形式で新しい質問を追加します：</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="code-block">---
+questions:
+  - question: ここに質問を書きます
+    answer: ここに回答を書きます。
+           複数行の場合は、このように記載できます。
+
+  - question: 次の質問
+    answer: 次の回答
+---</div>
+
+        <div class="step-by-step">
+            <h3>具体例</h3>
+            <div class="code-block">---
+questions:
+  - question: 利用料金について
+    answer: 相談やケアプラン作成に関わる費用、ケアマネジャーの費用については、すべて公費で賄われますので、当事業所から料金を請求することはありません。  ご利用者様の負担はありませんので、安心してサービスをご利用いただけます。
+---</div>
+        </div>
+
+        <div class="point-list">
+            <h3>修正のポイント</h3>
+            <ol>
+                <li>質問と回答は必ず <code>question:</code> と <code>answer:</code> で始めてください</li>
+                <li>質問と回答の前には必ず <code>- </code>（ハイフンとスペース）を入れてください</li>
+                <li>回答の中でリンクを入れる場合は <code>[表示テキスト](リンク先.html)</code> の形式で記載してください</li>
+                <li>ファイルの始めと終わりに必ず <code>---</code> を入れてください</li>
+                <li>インデント（行頭の空白）は必ず半角スペース2つを使用してください</li>
+                <li>質問と回答の間は1行空けないでください</li>
+                <li>異なる質問の間は1行空けてください</li>
+            </ol>
+        </div>
+
+        <div class="point-list">
+            <h3>改行について</h3>
+            <ol>
+                <li>改行したい場所に <code>＜br＞</code> タグを入れることで改行できます</li>
+                <li>複数行の回答を書く場合は、<code>＜br＞</code> タグを使用して改行してください</li>
+            </ol>
+            <div class="code-block">例（brタグで改行）：
+1行目<br>
+2行目<br>
+3行目</div>
+            <p>※ 半角スペース2つでの改行は本システムでは機能しないため、必ず <code>＜br＞</code> タグをご使用ください。</p>
+        </div>
+
+        <h2>ニュースの修正方法（news.md）</h2>
+        <p>ニュースは時系列順に並んでいます。新しいニュースは既存のニュースの上に追加してください。</p>
+
+        <div class="step-by-step">
+            <h3>新しいニュースを追加する場合</h3>
+            <div class="step">
+                <ol>
+                    <li>ファイルの上部にある既存のニュースの形式を確認します</li>
+                    <li>最新のニュースの上に、2行の空白を入れます</li>
+                    <li>以下の形式で新しいニュースを追加します：</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="code-block">## ここにニュースの内容を書きます
+- 日付: YYYY-MM-DD
+- カテゴリー: カテゴリー名
+- リンク: ../</div>
+
+        <div class="step-by-step">
+            <h3>具体例</h3>
+            <div class="code-block">## この度、**ケアぷらん樹**のホームページを開設いたしました。地域の皆様に、より多くの情報をお届けできるよう努めてまいります。
+- 日付: 2025-04-30
+- カテゴリー: ご挨拶
+- リンク: ../</div>
+        </div>
+
+        <div class="point-list">
+            <h3>修正のポイント</h3>
+            <ol>
+                <li>ニュースの内容は必ず <code>##</code>（シャープ2つ）で始めてください</li>
+                <li>日付は必ず <code>YYYY-MM-DD</code> の形式で記載してください（例：2025-04-30）</li>
+                <li>太字にしたい場合は、文字を <code>**</code> で囲んでください（例：<strong>太字</strong>）</li>
+                <li>各項目の前には必ず <code>- </code>（ハイフンとスペース）を入れてください</li>
+                <li>カテゴリーは既存のものから選んでください（ご挨拶、お知らせ、重要など）</li>
+                <li>リンクは通常 <code>../</code> のままにしてください</li>
+            </ol>
+        </div>
+
+        <div class="point-list">
+            <h3>リンクについて</h3>
+            <ul>
+                <li><strong>通常のニュース</strong>の場合：<br>
+                    <code>- リンク: ../</code> のままにしてください（トップページへのリンクとなります）</li>
+                <li><strong>特定のページへリンクしたい</strong>場合：<br>
+                    リンク先のページは事前に作成してサーバーにアップロードする必要があります。<br>
+                    例：イベント告知ページ、サービス紹介ページなど<br>
+                    ※ リンク先のページが必要な場合は、<a href="#contact" class="contact-link">お問い合わせ先</a>までご連絡ください。</li>
+            </ul>
+        </div>
+
+        <h2 id="upload-confirm">アップロードと確認</h2>
+        <div class="step-by-step">
+            <h3>ファイルの修正が完了したら</h3>
+            <div class="step">
+                <ol>
+                    <li>修正内容を保存します</li>
+                    <li>XServerのファイルマネージャーを開きます（<a href="#xserver-access">アクセス方法</a>を参照）</li>
+                    <li>「アップロード」ボタンから修正したファイルをアップロードします</li>
+                    <li>ウェブサイトで正しく表示されているか確認します</li>
+                    <li>問題がなければ作業完了です</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="warning">
+            <p><strong>ファイル操作時の注意事項：</strong></p>
+            <ul>
+                <li>ファイルをアップロードする前に、必ずバックアップを取っておいてください</li>
+                <li>アップロード後は必ずウェブサイトで表示を確認してください</li>
+                <li>問題が発生した場合は、すぐにバックアップファイルを使って復旧できるようにしておいてください</li>
+            </ul>
+        </div>
+
+        <h2>注意事項</h2>
+        <div class="warning">
+            <ul>
+                <li>ファイルを保存する前に、<strong>必ず内容を確認</strong>してください</li>
+                <li>形式が正しくないと、<strong>ウェブサイトで正しく表示されない</strong>可能性があります</li>
+                <li>変更後、<strong>ウェブサイトで正しく表示されているか確認</strong>してください</li>
+                <li><strong>不安な点がある場合は、修正前に必ずご相談</strong>ください</li>
+            </ul>
+        </div>
+        <h2 id="contact">お問い合わせ先</h2>
+        <p>不明な点がございましたら、以下までご連絡ください</p>
+        <div class="contact-info">
+            <ul>
+                <li>代表者：株式会社ハロスマイル 佐川昭一</li>
+                <li>代表電話：092-985-8138</li>
+                <li>メール：info@harosmile.com</li>
+            </ul>
+            <p>※ 些細な質問でもお気軽にご相談ください。</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-company">
+                <h3>会社情報</h3>
+                <p>株式会社ハロスマイル<br>
+                〒819-0007<br>
+                福岡市西区愛宕南1丁目1-39-301<br>
+                TEL: <a href="tel:092-985-8138">092-985-8138</a><br>
+                メール: <a href="mailto:info@harosmile.com">info@harosmile.com</a> または <a href="mailto:harosmile.s@gmail.com">harosmile.s@gmail.com</a></p>
+            </div>
+            <div class="footer-links">
+                <h3>リンク</h3>
+                <p><a href="https://harosmile.com" target="_blank">ホームページ</a><br>
+                <a href="https://harosmile.com/contact/" target="_blank">お問い合わせフォーム</a><br>
+                <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">ページトップへ</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 株式会社ハロスマイル All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
