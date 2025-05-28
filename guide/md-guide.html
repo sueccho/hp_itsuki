@@ -37,7 +37,6 @@
         .title-section {
             padding: 40px 0 30px;
             margin: 0 0 40px;
-            border-bottom: 2px solid #3498db;
         }
         .title-content {
             max-width: 1000px;
@@ -45,17 +44,35 @@
             padding: 0 20px;
         }
         .main-title {
-            font-size: 1.8em;
+            font-size: 2.2em;
             color: #2c3e50;
             margin: 0;
             padding: 0;
             font-weight: bold;
+            text-align: center;
+            position: relative;
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 3px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border-radius: 2px;
         }
         h1 {
             color: #2c3e50;
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
             font-size: 1.8em;
+            margin-top: 60px;
+        }
+        h1:first-of-type {
             margin-top: 30px;
         }
         h2 {
@@ -68,6 +85,10 @@
         h3 {
             color: #34495e;
             font-size: 1.2em;
+            margin: 25px 0 15px;
+            padding-left: 10px;
+            border-left: 2px solid #3498db;
+            position: relative;
         }
         .code-block {
             background-color: #ffffff;
@@ -83,28 +104,46 @@
             line-height: 1.8;
         }
         .point-list {
-            background-color: #fff5f5;
-            padding: 20px 20px 20px 35px;
+            background-color: #fff9e6;
+            padding: 4px 10px;
             margin: 15px 0;
             border-radius: 8px;
             position: relative;
+            border-left: 4px solid #ffc107;
+            color: #856404;
         }
         .point-list ol {
             margin: 0;
             padding-left: 20px;
         }
         .point-list li {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             line-height: 1.8;
         }
         .point-list li:last-child {
             margin-bottom: 0;
         }
+        .point-list h3 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
         .warning {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
+            background-color: #fff2f2;
+            border-left: 4px solid #dc3545;
             padding: 15px;
             margin: 15px 0;
+            color: #721c24;
+        }
+        .warning ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .warning li {
+            margin-bottom: 8px;
+        }
+        .warning li:last-child {
+            margin-bottom: 0;
         }
         code {
             background-color: #e8f4f8;
@@ -121,15 +160,87 @@
             margin: 15px 0;
         }
         .step-by-step {
-            background-color: #f8f9fa;
-            padding: 15px;
+            background-color: #f0f7fc;
+            padding: 20px;
             margin: 15px 0;
-            border-radius: 4px;
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .step {
-            margin-bottom: 15px;
-            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        .step ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            counter-reset: step-counter;
+        }
+        .step ol > li {
+            background: white;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            position: relative;
+            border: 2px solid #3498db;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .step ol > li::before {
+            content: 'STEP ' counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            top: -16px;
+            left: -2px;
+            background: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .step ol > li::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #3498db;
+        }
+        .step ol > li:last-child {
+            margin-bottom: 5px;
+        }
+        .step ol > li:last-child::after {
+            display: none;
+        }
+        .step ul {
+            list-style: none;
+            padding: 10px 0 0 20px;
+            margin: 10px 0 0 0;
+            border-top: 1px dashed #e0e0e0;
+        }
+        .step ul li {
+            position: relative;
+            padding: 8px 0 8px 20px;
+            color: #666;
+        }
+        .step ul li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8em;
+        }
+        .step a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .step a:hover {
+            text-decoration: underline;
         }
         .title-section h1 {
             border: none;
@@ -151,7 +262,11 @@
                 padding: 30px 0 20px;
             }
             .main-title {
-                font-size: 1.6em;
+                font-size: 1.8em;
+            }
+            .main-title::after {
+                width: 80px;
+                bottom: -12px;
             }
             h1 {
                 font-size: 1.6em;
@@ -313,23 +428,24 @@
             </div>
         </div>
 
-        <h2>修正の基本フロー</h2>
+        <h1>修正の基本フロー</h1>
         <div class="step-by-step">
             <div class="step">
                 <ol>
-                    <li>1. <a href="#xserver-access">XServerへのアクセス</a>
+                    <li><a href="#xserver-access" style="font-weight: bold;">XServerへのアクセス</a>
                         <ul>
                             <li>ログイン</li>
                             <li>ファイルマネージャーの操作</li>
+                            <li><a href="#before-starting-work">作業を始める前に以下の準備をしてください</a></li>
                         </ul>
                     </li>
-                    <li>2. <a href="#file-edit">ファイルの修正</a>
+                    <li><a href="#file-edit" style="font-weight: bold;">ファイルの修正</a>
                         <ul>
-                            <li>FAQの修正（faq.md）</li>
-                            <li>ニュースの修正（news.md）</li>
+                            <li><a href="#faq-edit">FAQの修正（faq.md）</a></li>
+                            <li><a href="#news-edit">ニュースの修正（news.md）</a></li>
                         </ul>
                     </li>
-                    <li>3. <a href="#upload-confirm">アップロードと確認</a>
+                    <li><a href="#upload-confirm" style="font-weight: bold;">アップロードと確認</a>
                         <ul>
                             <li>修正ファイルのアップロード</li>
                             <li>表示確認</li>
@@ -339,65 +455,33 @@
             </div>
         </div>
 
-        <h2 id="xserver-access">XServerへのアクセス方法</h2>
+        <h1 id="xserver-access">XServerへのアクセス方法</h1>
+        <h2>XServerのファイルマネージャーへのアクセス手順</h2>
         <div class="step-by-step">
-            <h3>XServerのファイルマネージャーへのアクセス手順</h3>
+            
             <div class="step">
                 <ol>
-                    <li>以下のURL（サーバーパネル ログイン）にアクセスします：<br>
+                    <li>以下のURL（サーバーパネル ログイン）にアクセスします<br>
                         <code>https://secure.xserver.ne.jp/xapanel/login/xserver/server/</code></li>
-                    <li>ログイン情報を入力：
-                        <ul>
-                            <li>ID：<code>XXXXX</code></li>
-                            <li>パスワード：<code>XXXXX</code></li>
-                        </ul>
+                    <li>ログイン情報を入力
                     </li>
-                    <li>認証コードが <code>cp-itsuki@outlook.jp</code> に送信されます</li>
+                    <li>認証コードが <code>cp-itsuki@outlook.jp</code> 宛に送信されます</li>
                     <li>メールで受け取った認証コードを入力してログインします</li>
                     <li>ログイン後、「ファイルマネージャー」をクリックします<br>
                         <img src="server_panel.png" alt="サーバーパネルの画面" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;"></li>
-                    <li>ファイルマネージャーの画面で必要なファイルの操作（ダウンロード・アップロード）ができます<br>
+                    <li>ファイルマネージャ画面で<code>careplan-utsuki.com</code>というフォルダを見つけて開きます<br>
                         <img src="filemanager.png" alt="サーバーパネルの画面" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;"></li>
                     <li>以下のパスに移動してください：<br>
-                        <code>/careplan-itsuki.com/public_html/data</code><br>
-                        <img src="mdfile.png" alt="Markdownファイルの場所" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;"><br>
-                        ここで<code>faq.md</code>と<code>news.md</code>のダウンロード・アップロードを行います。</li>
+                        <code>/public_html/data</code><br>このディレクトリ内で<code>faq.md</code>と<code>news.md</code>のダウンロード・アップロードを行います。<br>
+                        <img src="mdfile.png" alt="Markdownファイルの場所" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+                        </li>
                 </ol>
             </div>
         </div>
 
-        <div class="point-list">
-            <h3>ファイルマネージャーでの操作方法</h3>
-            <ol>
-                <li><strong>ファイルのダウンロード：</strong>
-                    <ul>
-                        <li>対象のファイルを選択</li>
-                        <li>「ダウンロード」ボタンをクリック</li>
-                        <li>ファイルがローカルPCに保存されます</li>
-                    </ul>
-                </li>
-                <li><strong>ファイルのアップロード：</strong>
-                    <ul>
-                        <li>「アップロード」ボタンをクリック</li>
-                        <li>アップロードするファイルを選択</li>
-                        <li>アップロード完了を確認</li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-
-        <div class="warning">
-            <p><strong>セキュリティに関する注意事項：</strong></p>
-            <ul>
-                <li>ログイン情報は厳重に管理してください</li>
-                <li>認証コードは第三者に開示しないでください</li>
-                <li>作業が終わったら必ずログアウトしてください</li>
-                <li>ブラウザの「戻る」ボタンは使用せず、必ずファイルマネージャーの機能を使用してください</li>
-            </ul>
-        </div>
-
+        <h1 id="before-starting-work">作業を始める前に以下の準備をしてください</h1>
         <div class="step-by-step">
-            <h3>作業を始める前に以下の準備をしてください</h3>
+            
             <div class="step">
                 <ol>
                     <li>XServerにログインし、ファイルマネージャーを開きます（<a href="#xserver-access">アクセス方法</a>を参照）</li>
@@ -408,17 +492,17 @@
             </div>
         </div>
 
-        <h2 id="file-edit">ファイルの修正</h2>
-        <h2>FAQの修正方法（faq.md）</h2>
+        <h1 id="file-edit">ファイルの修正</h1>
+        <h2 id="faq-edit">FAQの修正方法（faq.md）</h2>
         <p>FAQファイルは質問と回答のペアで構成されています。以下の手順で修正してください：</p>
-
+        <h3>新しい質問を追加する場合</h3>
         <div class="step-by-step">
-            <h3>新しい質問を追加する場合</h3>
+            
             <div class="step">
                 <ol>
                     <li>ファイルの中程にある他の質問と回答の形式を参考にします</li>
                     <li>最後の質問の後ろに、2行の空白を入れます</li>
-                    <li>以下の形式で新しい質問を追加します：</li>
+                    <li>以下の形式で新しい質問を追加します</li>
                 </ol>
             </div>
         </div>
@@ -432,9 +516,9 @@ questions:
   - question: 次の質問
     answer: 次の回答
 ---</div>
-
+        <h3>具体例</h3>
         <div class="step-by-step">
-            <h3>具体例</h3>
+            
             <div class="code-block">---
 questions:
   - question: 利用料金について
@@ -442,9 +526,9 @@ questions:
 ---</div>
         </div>
 
+        <h3>修正のポイント</h3>
         <div class="point-list">
-            <h3>修正のポイント</h3>
-            <ol>
+            <ul>
                 <li>質問と回答は必ず <code>question:</code> と <code>answer:</code> で始めてください</li>
                 <li>質問と回答の前には必ず <code>- </code>（ハイフンとスペース）を入れてください</li>
                 <li>回答の中でリンクを入れる場合は <code>[表示テキスト](リンク先.html)</code> の形式で記載してください</li>
@@ -452,15 +536,15 @@ questions:
                 <li>インデント（行頭の空白）は必ず半角スペース2つを使用してください</li>
                 <li>質問と回答の間は1行空けないでください</li>
                 <li>異なる質問の間は1行空けてください</li>
-            </ol>
+            </ul>
         </div>
 
+        <h3>改行について</h3>
         <div class="point-list">
-            <h3>改行について</h3>
-            <ol>
+            <ul>
                 <li>改行したい場所に <code>＜br＞</code> タグを入れることで改行できます</li>
                 <li>複数行の回答を書く場合は、<code>＜br＞</code> タグを使用して改行してください</li>
-            </ol>
+            </ul>
             <div class="code-block">例（brタグで改行）：
 1行目<br>
 2行目<br>
@@ -468,16 +552,16 @@ questions:
             <p>※ 半角スペース2つでの改行は本システムでは機能しないため、必ず <code>＜br＞</code> タグをご使用ください。</p>
         </div>
 
-        <h2>ニュースの修正方法（news.md）</h2>
+        <h2 id="news-edit">ニュースの修正方法（news.md）</h2>
         <p>ニュースは時系列順に並んでいます。新しいニュースは既存のニュースの上に追加してください。</p>
-
+        <h3>新しいニュースを追加する場合</h3>
         <div class="step-by-step">
-            <h3>新しいニュースを追加する場合</h3>
+            
             <div class="step">
                 <ol>
                     <li>ファイルの上部にある既存のニュースの形式を確認します</li>
                     <li>最新のニュースの上に、2行の空白を入れます</li>
-                    <li>以下の形式で新しいニュースを追加します：</li>
+                    <li>以下の形式で新しいニュースを追加します</li>
                 </ol>
             </div>
         </div>
@@ -487,28 +571,28 @@ questions:
 - カテゴリー: カテゴリー名
 - リンク: ../</div>
 
+        <h3>具体例</h3>
         <div class="step-by-step">
-            <h3>具体例</h3>
             <div class="code-block">## この度、**ケアぷらん樹**のホームページを開設いたしました。地域の皆様に、より多くの情報をお届けできるよう努めてまいります。
 - 日付: 2025-04-30
 - カテゴリー: ご挨拶
 - リンク: ../</div>
         </div>
-
+        <h3>修正のポイント</h3>
         <div class="point-list">
-            <h3>修正のポイント</h3>
-            <ol>
+            
+            <ul>
                 <li>ニュースの内容は必ず <code>##</code>（シャープ2つ）で始めてください</li>
                 <li>日付は必ず <code>YYYY-MM-DD</code> の形式で記載してください（例：2025-04-30）</li>
                 <li>太字にしたい場合は、文字を <code>**</code> で囲んでください（例：<strong>太字</strong>）</li>
                 <li>各項目の前には必ず <code>- </code>（ハイフンとスペース）を入れてください</li>
                 <li>カテゴリーは既存のものから選んでください（ご挨拶、お知らせ、重要など）</li>
                 <li>リンクは通常 <code>../</code> のままにしてください</li>
-            </ol>
+            </ul>
         </div>
 
+        <h3>リンクについて</h3>
         <div class="point-list">
-            <h3>リンクについて</h3>
             <ul>
                 <li><strong>通常のニュース</strong>の場合：<br>
                     <code>- リンク: ../</code> のままにしてください（トップページへのリンクとなります）</li>
@@ -519,9 +603,10 @@ questions:
             </ul>
         </div>
 
-        <h2 id="upload-confirm">アップロードと確認</h2>
+        <h1 id="upload-confirm">アップロードと確認</h1>
+        <h3>ファイルの修正が完了したら</h3>
         <div class="step-by-step">
-            <h3>ファイルの修正が完了したら</h3>
+            
             <div class="step">
                 <ol>
                     <li>修正内容を保存します</li>
@@ -532,9 +617,9 @@ questions:
                 </ol>
             </div>
         </div>
-
+        <h3>ファイル操作時の注意事項</h3>
         <div class="warning">
-            <p><strong>ファイル操作時の注意事項：</strong></p>
+            
             <ul>
                 <li>ファイルをアップロードする前に、必ずバックアップを取っておいてください</li>
                 <li>アップロード後は必ずウェブサイトで表示を確認してください</li>
@@ -542,7 +627,7 @@ questions:
             </ul>
         </div>
 
-        <h2>注意事項</h2>
+        <h1>注意事項</h1>
         <div class="warning">
             <ul>
                 <li>ファイルを保存する前に、<strong>必ず内容を確認</strong>してください</li>
@@ -551,7 +636,7 @@ questions:
                 <li><strong>不安な点がある場合は、修正前に必ずご相談</strong>ください</li>
             </ul>
         </div>
-        <h2 id="contact">お問い合わせ先</h2>
+        <h1 id="contact">お問い合わせ先</h1>
         <p>不明な点がございましたら、以下までご連絡ください</p>
         <div class="contact-info">
             <ul>
@@ -576,8 +661,8 @@ questions:
             <div class="footer-links">
                 <h3>リンク</h3>
                 <p><a href="https://harosmile.com" target="_blank">ホームページ</a><br>
-                <a href="https://harosmile.com/contact/" target="_blank">お問い合わせフォーム</a><br>
-                <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">ページトップへ</a></p>
+                <a href="https://harosmile.com/contact/" target="_blank">お問い合わせ</a><br>
+                <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">ページトップ</a></p>
             </div>
         </div>
         <div class="copyright">
